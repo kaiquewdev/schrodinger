@@ -9,8 +9,6 @@ TODO:
     
     - Anatomize tests, to running
     
-    - Clear duplicated anchors
-    
     - Algorithm: search engine
     
     - Algorithm: recomendation 

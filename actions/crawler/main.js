@@ -37,14 +37,14 @@ var Crawler = (function () {
                        metas: {
                            author: target.find('meta[name=author]').attr('content'),
                            description: target.find('meta[name=description]').attr('content'),
-                           keywords: target.find('meta[name=keywords]').attr('content').split(','),
+                           keywords: target.find('meta[name=keywords]').attr('content'),
                        },
 
                        title: target.find('head title').text(),
-                       anchors: target.find('body a'),
-                       images: target.find('body img'),
+                       anchors: target.find('a'),
+                       images: target.find('img'),
                    };
-               
+
                // Extract href of anchors
                extraction.anchors = (function () {
                    var anchors = extraction.anchors,
@@ -60,7 +60,7 @@ var Crawler = (function () {
                        counter += 1;
                    }
 
-                   return output;
+                   return _.compact( _.uniq( output ) );
                } ()); 
 
                // Extract src of images
@@ -78,7 +78,7 @@ var Crawler = (function () {
                        counter += 1;
                    }
 
-                   return output;
+                   return _.compact( _.uniq( output ) );
                } ());
 
                if ( extraction ) {
