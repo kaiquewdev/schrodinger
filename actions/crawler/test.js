@@ -1,16 +1,23 @@
-var http = require('http');
+var vows = require('vows'),
+    assert = require('assert'),
+    crawler = require('./main').core;
 
-var options = {
-    host: 'www.google.com.br',
-    port: 80,
-    path: '/',
-    agent: false
-};
-
-http.get(options, function ( res ) {
-    res.on('data', function ( chunk ) {
-        console.log( chunk.toString('utf-8') );    
-    });
-}).on('error', function ( e ) {
-    console.log( e.message );
-});
+vows.describe('Web Crawler').addBatch({
+    'Crawler page': {
+        topic: '',
+        'response content': function ( topic ) {
+            crawler.page({url: 'kaiquewdev.nodester.com'}, function ( content ) {
+                assert.equal( content && true, true, 'No content load' );
+            });
+        }
+    },
+    
+    'Number of links in the page': {
+        topic: '',
+        'anchors number in the kaiquewdev': function ( topic ) {
+            crawler.page({url: 'kaiquewdev.nodester.com'}, function ( content ) {
+                assert.equal( content.find('body a').length === 10, true, '10 anchors in the home page' );
+            });
+        },
+    }
+}).run();
