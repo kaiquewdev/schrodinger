@@ -4,16 +4,17 @@ schrodinger
 No centralized search engine, using node.js
 
 TODO:
-    Add full path, in the anchors
     
-    Anatomize tests, to running
+    - Add full path, in the anchors
     
-    Clear duplicated anchors
+    - Anatomize tests, to running
     
-    Algorith: search engine
+    - Clear duplicated anchors
     
-    Algorith: recomendation 
+    - Algorith: search engine
     
-    Algorith: zipfs laws http://en.wikipedia.org/wiki/Zipf%27s_law
+    - Algorith: recomendation 
+    
+    - Algorith: zipfs laws http://en.wikipedia.org/wiki/Zipf%27s_law
 
 note: all modulated
