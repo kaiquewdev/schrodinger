@@ -26,6 +26,70 @@ var Crawler = (function () {
                 });
             }
         },
+
+        extract: function ( settings ) {
+           var output = {};
+               settings = settings || {};
+
+           if ( settings ) {
+               var target = settings['target'],
+                   extraction = {
+                       metas: {
+                           author: target.find('meta[name=author]').attr('content'),
+                           description: target.find('meta[name=description]').attr('content'),
+                           keywords: target.find('meta[name=keywords]').attr('content').split(','),
+                       },
+
+                       title: target.find('head title').text(),
+                       anchors: target.find('body a'),
+                       images: target.find('body img'),
+                   };
+               
+               // Extract href of anchors
+               extraction.anchors = (function () {
+                   var anchors = extraction.anchors,
+                       len = anchors.length,
+                       counter = 0,
+                       output = [];
+                   
+                   while ( counter < len ) {
+                       if ( anchors.eq('href') !== '' ) {
+                          output.push( anchors.eq( counter ).attr('href') );    
+                       }
+
+                       counter += 1;
+                   }
+
+                   return output;
+               } ()); 
+
+               // Extract src of images
+               extraction.images = (function () {
+                   var images = extraction.images,
+                       len = images.length,
+                       counter = 0,
+                       output = [];
+
+                   while ( counter < len ) {
+                       if ( images.eq( counter ).attr('src') !== '' ) {
+                           output.push( images.eq( counter ).attr('src') );
+                       }    
+
+                       counter += 1;
+                   }
+
+                   return output;
+               } ());
+
+               if ( extraction ) {
+                   output = extraction;    
+               }
+           }
+
+           return output;
+        },
+
+        core: core,
     };  
 
     return new core;
