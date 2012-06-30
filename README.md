@@ -11,10 +11,10 @@ TODO:
     
     - Clear duplicated anchors
     
-    - Algorith: search engine
+    - Algorithm: search engine
     
-    - Algorith: recomendation 
+    - Algorithm: recomendation 
     
-    - Algorith: zipfs laws http://en.wikipedia.org/wiki/Zipf%27s_law
+    - Algorithm: zipfs laws http://en.wikipedia.org/wiki/Zipf%27s_law
 
 note: all modulated
