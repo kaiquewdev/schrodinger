@@ -1,15 +1,14 @@
 var Benchmark = require('benchmark'),
     crawler = require('../main').core;
 
-var results = new Benchmark.Suite('Crawler page', {
-    'onstart': crawler.page({
+var suite = new Benchmark.Suite;
+
+suite.add('Crawler the page', function () {
+    crawler.page({
         url: 'kaiquewdev.nodester.com'
     }, function ( content ) {
-        return content;
-    })
-});
-
-results.run({
-    async: true,
-    queued: true
-});
+        crawler.extract({
+            target: content 
+        });
+    });    
+}).run();
