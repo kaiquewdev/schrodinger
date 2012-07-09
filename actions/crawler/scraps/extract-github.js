@@ -5,9 +5,10 @@ crawler.page({
     url: 'github.com',
     https: true,
 }, function ( content ) {
-    console.log(
-        crawler.extract({
-            target: content    
-        })
-    );
+    var extraction = crawler.extract({
+        target: content,
+        mode: 'images'
+    });
+
+    console.log( extraction );
 });

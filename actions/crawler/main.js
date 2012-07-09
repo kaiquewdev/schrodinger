@@ -45,15 +45,21 @@ var Crawler = (function () {
 
            if ( settings ) {
                var target = settings['target'],
+                   mode = settings['mode'],
                    extraction = {
                        metas: {
+                           // Get meta content of name author
                            author: target.find('meta[name=author]').attr('content'),
+                           // Get content of description name
                            description: target.find('meta[name=description]').attr('content'),
+                           // Get content of keywords name
                            keywords: target.find('meta[name=keywords]').attr('content'),
                        },
-
+                       // Get title of page
                        title: target.find('head title').text(),
+                       // Get anchors of page
                        anchors: target.find('a'),
+                       // Get images of page
                        images: target.find('img'),
                    };
 
@@ -94,7 +100,11 @@ var Crawler = (function () {
                } ());
 
                if ( extraction ) {
-                   output = extraction;    
+                   if ( mode ) {
+                       output = extraction[ mode ];
+                   } if ( !mode ) {
+                       output = extraction;    
+                   }
                }
            }
 
