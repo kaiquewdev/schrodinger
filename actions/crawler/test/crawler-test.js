@@ -19,6 +19,7 @@ vows.describe('Web Crawler').addBatch({
             crawler.page({url: 'kaiquewdev.nodester.com'}, function ( content ) {
                 assert.equal( content.find('body a').length === 10, true, '10 anchors in the home page' );
             });
+            
         },
     },
 
